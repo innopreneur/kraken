@@ -1,0 +1,19 @@
+{
+  "name": "kraken",
+  "version": "0.0.1",
+  "description": "Kraken to devour data from mighty kingdom walls",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.608.0",
+    "dotenv": "^8.2.0",
+    "puppeteer": "^2.0.0",
+    "puppeteer-cluster": "^0.18.0",
+    "request": "^2.88.0",
+    "request-progress": "^3.0.0"
+  }
+}
