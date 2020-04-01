@@ -2,6 +2,7 @@ const { downloadFile } = require('../utils/downloader');
 const path = require('path');
 
 async function getDetails(page) {
+    page.setDefaultNavigationTimeout(1000 * 60 * 3)
     //title
     let title = await page.$eval('h1.dataset-header-v2__title', node => node.innerText);
     //subtitle
@@ -40,11 +41,13 @@ async function getDetails(page) {
     votes: ${totalVotes}
     `)
 
-
-    let destination = path.resolve(__dirname, "..", "..", "data", title.replace(/\s/g, "-"))
-    downloadFile(downloadUrl, destination);
-    console.log('----------------------------<=<=<=')
+    //click download button
+    await Promise.all([
+        page.click("a.button__anchor-wrapper"),
+        page.waitForNavigation({ waitUntil: 'networkidle0' }),
+    ]);
+    //let destination = path.resolve(__dirname, "..", "..", "data", title.replace(/\s/g, "-"))
+    //downloadFile(downloadUrl, destination);
 }
-
 
 module.exports = { getDetails }

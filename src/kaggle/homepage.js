@@ -1,18 +1,15 @@
 const puppeteer = require("puppeteer");
 
 
-async function getLinksFromHomepage() {
+async function getLinksFromHomepage(page, url) {
     try {
-        const browser = await puppeteer.launch({ headless: true });
-        const page = (await browser.pages())[0];
-        await page.goto(process.env.URL, { waitUntil: 'networkidle2' });
+        await page.goto(url, { waitUntil: 'networkidle2' });
         let totalCount = await getTotalResultsCount(page);
         console.log(totalCount);
         await scrollToEnd(page);
         let links = await getAllLinks(page);
-        console.log(links)
+        //console.log(links)
         //go through each link and get details
-        await browser.close();
         return links;
     } catch (err) {
         console.log(err);

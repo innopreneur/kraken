@@ -1,6 +1,5 @@
 require('dotenv').config()
-const { runParallel } = require('./kaggle/cluster');
-
+const { runParallel } = require('./nyc/cluster');
 runParallel();
 
 

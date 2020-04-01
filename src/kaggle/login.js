@@ -1,10 +1,8 @@
-const puppeteer = require("puppeteer");
-let loginUrl = 'https://www.kaggle.com/account/login?phase=emailSignIn';
-
-
 async function login(page) {
+    debugger;
+    let loginUrl = 'https://www.kaggle.com/account/login?phase=emailSignIn';
     //go to login page
-    await page.goto(loginUrl, { waitUntil: 'networkidle2' });
+    await page.goto(loginUrl, { waitUntil: 'networkidle0' });
 
     //enter email
     await page.type('input[name="email"]', process.env.KAGGLE_EMAIL);
