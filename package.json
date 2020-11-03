@@ -1,22 +1,37 @@
 {
   "name": "kraken",
   "version": "0.0.1",
-  "description": "Kraken to devour data from mighty kingdom walls",
+  "description": "Biggest data scraper the universe has ever seen",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "build": "rm -rf dist/ && babel src -d dist --source-maps",
+    "start": "npm run build && node -r source-map-support/register dist/server.js",
+    "dev": "nodemon -r source-map-support/register dist/server.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.608.0",
     "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-json-validator-middleware": "^2.1.1",
     "googleapis": "^39.2.0",
     "mime-types": "^2.1.26",
+    "mongodb": "^3.6.2",
     "puppeteer": "^2.0.0",
     "puppeteer-cluster": "^0.18.0",
+    "qs": "^6.9.4",
     "request": "^2.88.0",
-    "request-progress": "^3.0.0"
+    "request-progress": "^3.0.0",
+    "source-map-support": "^0.5.19",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.6"
   }
 }
